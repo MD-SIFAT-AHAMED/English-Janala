@@ -3,14 +3,177 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <!-- Daisy Ui & Tailwind css link -->
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
+    <!-- FontAwesome Cdn link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>English Janala</title>
 </head>
+<style>
+
+    html{
+    scroll-behavior: smooth;
+    }
+    .active{
+        background:#422ad5;
+        color:white;
+    }
+</style>
 <body>
-    
+    <!-- Header section -->
+    <header id="header" class="bg-[#f1efef] hidden border-b-2 border-gray-200">
+        <nav class="w-11/12 mx-auto flex justify-between items-center py-5 ">
+            <figure>
+                <h2 class="flex items-center text-xl font-semibold">English <span><img src="assets/logo.png" alt="logo-img"></span> জানালা</h2>
+            </figure>
+            <div>
+                <a href="#Faq-section"><button class="btn btn-outline btn-primary"><img src="assets/fa-circle-question.png" alt="btn-img">FAQ</button></a>
+                <a href="#learn-section"><button class="btn btn-outline btn-primary"><img src="assets/fa-book-open.png" alt="btn-img">Learn</button></a>
+                <button onclick="logoutSection()" class="btn btn-outline btn-primary"><img src="assets/fa-arrow-right-from-bracket.png" alt="btn-img">Logout</button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Banner section -->
+        <section id="banner" class="w-11/12 mx-auto ">
+            <div class="flex justify-center items-center gap-10">
+                <div class="space-y-4 w-4/5">
+                    <h2 class="text-5xl font-semibold"><span class="text-[#00BCFF]">English</span> is Easy!!</h2>
+                    <p class="text-2xl">আজ থেকেই আপনার ভাষা শেখার যাত্রা শুরু করুন। আপনি যদি নতুন হন অথবা আপনার দক্ষতা বাড়াতে চান, আমাদের Interactive Lessons আপনাকে নিয়ে যাবে অন্য একটি Level এ</p>
+                    <form onsubmit="" class="space-y-2 pt-3">
+                        <input id="name-input" class="input p-1 border-gray-400 pe-12 rounded-sm" type="text" placeholder="Enter Your Name">
+                        <br>
+                        <input id="input-password" class="input  p-1 border-gray-400  pe-12 rounded-sm" type="password" placeholder="Enter Loging code(123456)">
+                        <br>
+                        <input onclick="submitFrom()" class="btn btn-outline btn-primary" type="submit" value="Get Started">
+                    </form>
+                </div>
+                <div>
+                    <img src="assets/hero-student.png" alt="">
+                </div>
+            </div>
+        </section>
+
+        <!-- learn About section -->
+        <section id="learn-section" class="w-11/12 mx-auto  mt-3 hidden">
+            <h3 class="text-center text-4xl font-semibold"><span class="text-[#00BCFF]">Let's</span> Learn Vocabularies</h3>
+            <br>
+            <!-- All lesson Buttons -->
+            <div id="lesson-btn" class="flex justify-center items-center gap-2">
+
+            </div>
+
+            <!-- lesson select section -->
+            <div id="lesson-select-section" class="bg-[#F8F8F8] mt-6 py-16 rounded-3xl text-center space-y-2">
+                <p class="text-base text-[#79716B]">আপনি এখনো কোন Lesson Select করেন নাই</p>
+                <p class="text-4xl font-semibold">একটি Lesson Select করুন।</p>
+            </div>
+
+            <!-- Vocabulary Section -->
+            <div id="vocabulary-section" class="bg-[#F8F8F8] grid grid-cols-3 gap-4 mt-6 rounded-lg">
+                
+            </div>
+
+            <!-- spinner -->
+           <div id="loading-spinner" class="hidden">
+                <div class="flex justify-center">
+                    <div class="w-10 flex justify-center items-center h-10 border-4 text-center border-gray-300 border-t-4 border-t-blue-500 rounded-full animate-spin"></div>
+                </div>
+           </div>
+            <!-- No Word Found -->
+            <div id="no-word-found">
+                
+            </div>
+            <!-- Vocabulary Detais Dialog -->
+            <div id="vocabulary-details">
+                
+            </div>
+        </section >
+        
+        <!--FAQ Section -->
+        <section id="Faq-section" class="w-11/12 mx-auto hidden my-5">
+            <div class="my-16">
+                <h3 class="text-4xl text-center font-semibold "><span class="text-[#00BCFF] ">Frequently</span> Asked Questions</h3>
+            </div>
+            <div class="mb-10">
+                <div class="collapse collapse-plus bg-base-100 border border-base-300">
+                    <input type="radio" name="my-accordion-3" checked="checked" />
+                    <div class="collapse-title font-semibold text-base">1.the difference between var, let, and const</div>
+                    <div class="collapse-content  text-gray-600 text-sm">
+                        var:Function-scoped, can be redeclared and reassigned.
+                        let: Block-scoped, can be reassigned but not redeclared.
+                        const: Block-scoped, cannot be reassigned or redeclared.
+                    </div>
+                  </div>
+                  <div class="collapse collapse-plus bg-base-100 border border-base-300">
+                    <input type="radio" name="my-accordion-3" />
+                    <div class="collapse-title font-semibold text-base">2.the difference between map(), forEach(), and filter()</div>
+                    <div class="collapse-content  text-gray-600 text-sm">
+                        map():Returns a new array by applying a function to each element.
+                        forEach():terates over elements but does not return a new array.
+                        filter():Returns a new array with elements that pass a given condition.
+                    </div>
+                  </div>
+                  <div class="collapse collapse-plus bg-base-100 border border-base-300">
+                    <input type="radio" name="my-accordion-3" />
+                    <div class="collapse-title font-semibold  text-base">3.explain arrow functions and how they are different from regular functions</div>
+                    <div class="collapse-content text-gray-600 text-sm">
+                        Arrow Functions:
+                        Shorter syntax
+                        No arguments object
+                        Regular Functions:
+                        Has its own arguments object
+                        More flexible for complex functions
+                    </div>
+                  </div>
+                  <div class="collapse collapse-plus bg-base-100 border border-base-300">
+                    <input type="radio" name="my-accordion-3" />
+                    <div class="collapse-title font-semibold text-base">4.how JavaScript Promises work
+                    </div>
+                    <div class="collapse-content  text-gray-600 text-sm"> 
+                        pendin Initial state, operation not completed
+                        then Operation completed successfully resolve or
+                        Rejected Operation failed 
+                    </div>
+                  </div>
+                  <div class="collapse collapse-plus bg-base-100 border border-base-300">
+                    <input type="radio" name="my-accordion-3" />
+                    <div class="collapse-title font-semibold text-base">5.how closures work in JavaScript</div>
+                    <div class="collapse-content text-gray-600 text-sm">
+                        A closure in JavaScript happens when a function remembers and can access variables from its outer function, even after the outer function has finished running.
+                    </div>
+                  </div>
+            </div>
+        </section>
+    </main>
+        <!--Footer section  -->
+    <footer class="border-t-1 border-gray-400 mt-5">
+        <div class="w-11/12 mx-auto flex justify-between items-center py-5 ">
+            <div class="space-y-2">
+                <figure>
+                    <h2 class="flex items-center text-xl font-semibold">English <span><img src="assets/logo.png" alt="logo-img"></span> জানালা</h2>
+                </figure>
+                <p class="text-xl">ইংরেজি শিখুন সহজে</p>
+                <p class="text-sm">Providing ED-Tech Applications since 2025</p>
+            </div>
+            <div class="space-y-2">
+                <p class="text-xl">Follow Us</p>
+                <div class="flex items-center gap-3">
+                    <a href="https://www.facebook.com/heyiamsifatahamed"><img src="assets/fb-thumb.png" alt="fb-img"></a>
+                    <a href="https://www.youtube.com/@mdsifatahamed6339"><img src="assets/youtube-thumb.png" alt="youTube-img"></a>
+                    <a href="https://www.instagram.com/md_sifat_ahamed_/?hl=en"><img src="assets/instagram-thumb.png" alt="instagram-img"></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- JavaScript File Add -->
+    <script src="script/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 </html>
